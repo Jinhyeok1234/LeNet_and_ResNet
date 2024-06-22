@@ -258,7 +258,7 @@ if __name__ == '__main__':
     models = [model.to(device) for model in models]
 
     # 학습 및 저장
-    EPOCHS = 30
+    EPOCHS = 100
     train_accs, train_losses, test_accs, test_losses =(
         train_and_test(train_dataloader, test_dataloader, models, loss_fn, optimizers, accuracy, device, EPOCHS))
     save_result("ResNet_CIFAR10", train_accs, train_losses, test_accs, test_losses, EPOCHS)
@@ -286,8 +286,7 @@ if __name__ == '__main__':
     models = [model.to(device) for model in models]
 
     # 학습 및 저장
-    EPOCHS = 30
+    EPOCHS = 100
     train_accs, train_losses, test_accs, test_losses = (
         train_and_test(train_dataloader, test_dataloader, models, loss_fn, optimizers, accuracy, device, EPOCHS))
     save_result("ResNet_CIFAR100", train_accs, train_losses, test_accs, test_losses, EPOCHS)
-    save_result("dummy", train_accs, train_losses, test_accs, test_losses, EPOCHS)

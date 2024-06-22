@@ -106,12 +106,29 @@ def showEMNIST():
     plt.close()
 
 def showResNet():
-    filename = 'ResNet'
+    plt.figure(figsize=(18, 8))
+    filename = 'ResNet_CIFAR10'
     train_errors, test_errors = loadResult(filename)
-    plt.figure(figsize=(10, 8))
+    plt.subplot(1, 2, 1)
     for i in range(2):
-        plt.plot(train_errors.columns, train_errors.iloc[i], label=f'train_{i}', marker='o', linestyle='-')
-        plt.plot(test_errors.columns, test_errors.iloc[i], label=f'test_{i}', marker='x', linestyle='--')
+        color = 'r' if i==0 else 'b'
+        name = 'ResNet-' + ('34' if i==0 else '17')
+        plt.plot(train_errors.columns, train_errors.iloc[i], label=f'train_{name}', marker='o', linestyle='-', color=color)
+        plt.plot(test_errors.columns, test_errors.iloc[i], label=f'test_{name}', marker='x', linestyle='--', color=color)
+    plt.xlabel('epoch')
+    plt.ylabel('error')
+    plt.grid(True)
+    plt.title(filename)
+    plt.legend()
+
+    filename = 'ResNet_CIFAR100'
+    train_errors, test_errors = loadResult(filename)
+    plt.subplot(1, 2, 2)
+    for i in range(2):
+        color = 'r' if i == 0 else 'b'
+        name = 'ResNet-' + ('34' if i == 0 else '17')
+        plt.plot(train_errors.columns, train_errors.iloc[i], label=f'train_{name}', marker='o', linestyle='-', color=color)
+        plt.plot(test_errors.columns, test_errors.iloc[i], label=f'test_{name}', marker='x', linestyle='--', color=color)
     plt.xlabel('epoch')
     plt.ylabel('error')
     plt.grid(True)
