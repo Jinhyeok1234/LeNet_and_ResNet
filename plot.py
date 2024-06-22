@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 import os
 
 # 결과 확인을 위한 코드
@@ -117,6 +118,7 @@ def showResNet():
         plt.plot(test_errors.columns, test_errors.iloc[i], label=f'test_{name}', marker='x', linestyle='--', color=color)
     plt.xlabel('epoch')
     plt.ylabel('error')
+    plt.xticks(np.arange(0,101,5))
     plt.grid(True)
     plt.title(filename)
     plt.legend()
@@ -131,6 +133,7 @@ def showResNet():
         plt.plot(test_errors.columns, test_errors.iloc[i], label=f'test_{name}', marker='x', linestyle='--', color=color)
     plt.xlabel('epoch')
     plt.ylabel('error')
+    plt.xticks(np.arange(0, 101, 5))
     plt.grid(True)
     plt.title(filename)
     plt.legend()
